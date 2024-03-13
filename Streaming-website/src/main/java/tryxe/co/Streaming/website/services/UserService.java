@@ -19,5 +19,8 @@ public class UserService {
         user.setRegistrationDate(LocalDate.now());
         return userRepository.saveAndFlush(user);
     }
-    
+
+    public Optional<User> get(Long id) {
+        return userRepository.findById(id);
+    }
 }
