@@ -14,4 +14,10 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     UserRepository userRepository;
+
+    public User create(User user) {
+        user.setRegistrationDate(LocalDate.now());
+        return userRepository.saveAndFlush(user);
+    }
+    
 }
