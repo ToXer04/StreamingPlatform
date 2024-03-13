@@ -14,17 +14,18 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     UserRepository userRepository;
-
     public User create(User user) {
         user.setRegistrationDate(LocalDate.now());
         return userRepository.saveAndFlush(user);
     }
-
     public Optional<User> get(Long id) {
         return userRepository.findById(id);
     }
-
     public List<User> getAll() {
         return userRepository.findAll();
+    }
+    public User update(Long id, User user) {
+        user.setId(id);
+        return userRepository.save(user);
     }
 }
