@@ -20,4 +20,11 @@ public class UserController {
     ) {
         return userService.create(user);
     }
+    @GetMapping("/get/{id}")
+    public Optional<User> get(
+            @PathVariable Long id
+    ) {
+        return userService.get(id);
+    }
+
 }
