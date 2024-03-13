@@ -1,1 +1,11 @@
-spring.application.name=Streaming-website
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/StreamingPlatform
+    username: root
+    password: EcoGrabber1@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database: mysql
+    show_sql: true
+    hibernate:
+      ddl-auto: create-drop
