@@ -30,4 +30,11 @@ public class UserController {
     public List<User> getAll() {
         return userService.getAll();
     }
+    @PutMapping("/update/{id}")
+    public User update(
+            @PathVariable Long id,
+            @RequestBody User user
+    ) {
+        return userService.update(id, user);
+    }
 }
