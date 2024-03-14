@@ -60,4 +60,10 @@ public class UserService {
             throw new Exception("Wrong format, it must be yyyy-mm-dd");
         }
     }
+    public User updateCountry(Long id, String country) throws Exception {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isEmpty()) throw new Exception("User with id " + id + " doesn't exist");
+        user.get().setCountry(country);
+        return userRepository.save(user.get());
+    }
 }
