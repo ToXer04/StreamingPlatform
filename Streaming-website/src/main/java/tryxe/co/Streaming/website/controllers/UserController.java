@@ -106,4 +106,10 @@ public class UserController {
 //    ) throws Exception {
 //        return userService.updateMembership(id, value);
 //    }
+    @DeleteMapping("/delete/{id}")
+    public void delete(
+            @PathVariable Long id
+    ) throws Exception {
+        userService.delete(id);
+    }
 }
