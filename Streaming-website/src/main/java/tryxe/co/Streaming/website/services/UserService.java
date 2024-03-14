@@ -66,4 +66,14 @@ public class UserService {
         user.get().setCountry(country);
         return userRepository.save(user.get());
     }
+    public User updatePrefix(Long id, String prefix) throws Exception {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isEmpty()) throw new Exception("User with id " + id + " doesn't exist");
+        try{
+            user.get().setPrefix(Long.parseLong(prefix));
+            return userRepository.save(user.get());
+        } catch (Exception exception) {
+            throw new Exception("Wrong format, it must be a numeric value");
+        }
+    }
 }
