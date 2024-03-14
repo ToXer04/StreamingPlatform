@@ -6,7 +6,6 @@ import tryxe.co.Streaming.website.entities.User;
 import tryxe.co.Streaming.website.repositories.UserRepository;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,5 +48,11 @@ public class UserService {
         } catch (Exception e) {
             throw new Exception("The email " + email + " is already associated to an account");
         }
+    }
+    public User updateBirthDate(Long id, LocalDate birthDate) throws Exception {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isEmpty()) throw new Exception("User with id " + id + " doesn't exist");
+        user.get().setBirthDate(birthDate);
+        return userRepository.save(user.get());
     }
 }
