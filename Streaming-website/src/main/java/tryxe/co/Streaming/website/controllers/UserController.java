@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import tryxe.co.Streaming.website.entities.User;
 import tryxe.co.Streaming.website.services.UserService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,5 +58,12 @@ public class UserController {
             @RequestParam String value
     ) throws Exception {
         return userService.updateEmail(id, value);
+    }
+    @PatchMapping("/update/{id}/birth-date")
+    public User updateBirthDate(
+            @PathVariable Long id,
+            @RequestParam String value
+    ) throws Exception {
+        return userService.updateBirthDate(id, value);
     }
 }

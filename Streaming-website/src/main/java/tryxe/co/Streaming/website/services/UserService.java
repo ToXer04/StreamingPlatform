@@ -6,6 +6,7 @@ import tryxe.co.Streaming.website.entities.User;
 import tryxe.co.Streaming.website.repositories.UserRepository;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,10 +50,14 @@ public class UserService {
             throw new Exception("The email " + email + " is already associated to an account");
         }
     }
-    public User updateBirthDate(Long id, LocalDate birthDate) throws Exception {
+    public User updateBirthDate(Long id, String birthDate) throws Exception {
         Optional<User> user = userRepository.findById(id);
         if(user.isEmpty()) throw new Exception("User with id " + id + " doesn't exist");
-        user.get().setBirthDate(birthDate);
-        return userRepository.save(user.get());
+        try{
+            user.get().setBirthDate(LocalDate.parse(birthDate));
+            return userRepository.save(user.get());
+        } catch (Exception exception) {
+            throw new Exception("Wrong format, it must be yyyy-mm-dd");
+        }
     }
 }
