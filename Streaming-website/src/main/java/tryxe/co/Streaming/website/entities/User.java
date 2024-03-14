@@ -28,7 +28,7 @@ public class User {
     @Column(nullable = false)
     private String country;
     private LocalDate registrationDate;
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private Long prefix;
     @Column(nullable = false, unique = true)
     private BigInteger phoneNumber;

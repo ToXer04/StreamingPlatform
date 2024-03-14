@@ -40,4 +40,14 @@ public class UserService {
         user.get().setSurname(surname);
         return userRepository.save(user.get());
     }
+    public User updateEmail(Long id, String email) throws Exception {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isEmpty()) throw new Exception("User with id " + id + " doesn't exist");
+        try {
+            user.get().setEmail(email);
+            return userRepository.save(user.get());
+        } catch (Exception e) {
+            throw new Exception("The email " + email + " is already associated to an account");
+        }
+    }
 }
