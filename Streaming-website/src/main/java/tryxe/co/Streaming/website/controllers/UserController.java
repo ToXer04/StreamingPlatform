@@ -80,4 +80,11 @@ public class UserController {
     ) throws Exception {
         return userService.updatePrefix(id, value);
     }
+    @PatchMapping("/update/{id}/phone-number")
+    public User updatePhoneNumber(
+            @PathVariable Long id,
+            @RequestParam String value
+    ) throws Exception {
+        return userService.updatePhoneNumber(id, value);
+    }
 }
