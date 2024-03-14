@@ -87,4 +87,12 @@ public class UserController {
     ) throws Exception {
         return userService.updatePhoneNumber(id, value);
     }
+//TODO
+//    @PatchMapping("/update/{id}/membership")
+//    public User updateMembership(
+//            @PathVariable Long id,
+//            @RequestParam String value
+//    ) throws Exception {
+//        return userService.updateMembership(id, value);
+//    }
 }

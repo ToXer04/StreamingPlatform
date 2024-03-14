@@ -90,4 +90,10 @@ public class UserService {
             throw new Exception("The phone number " + phoneNumber + " is already associated to an account");
         }
     }
+//TODO
+//    public User updateMembership(Long id, String membershipId) throws Exception {
+//        Optional<User> user = userRepository.findById(id);
+//        if(user.isEmpty()) throw new Exception("User with id " + id + " doesn't exist");
+//        return null;
+//    }
 }
