@@ -73,4 +73,11 @@ public class UserController {
     ) throws Exception {
         return userService.updateCountry(id, value);
     }
+    @PatchMapping("/update/{id}/prefix")
+    public User updatePrefix(
+            @PathVariable Long id,
+            @RequestParam String value
+    ) throws Exception {
+        return userService.updatePrefix(id, value);
+    }
 }
