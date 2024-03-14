@@ -51,4 +51,11 @@ public class UserController {
     ) throws Exception {
         return userService.updateSurname(id, value);
     }
+    @PatchMapping("/update/{id}/email")
+    public User updateEmail(
+            @PathVariable Long id,
+            @RequestParam String value
+    ) throws Exception {
+        return userService.updateEmail(id, value);
+    }
 }
