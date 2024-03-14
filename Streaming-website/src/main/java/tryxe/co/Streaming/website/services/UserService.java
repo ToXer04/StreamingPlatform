@@ -34,4 +34,10 @@ public class UserService {
         user.get().setName(name);
         return userRepository.save(user.get());
     }
+    public User updateSurname(Long id, String surname) throws Exception {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isEmpty()) throw new Exception("User with id " + id + " doesn't exist");
+        user.get().setSurname(surname);
+        return userRepository.save(user.get());
+    }
 }
