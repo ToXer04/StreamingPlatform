@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import tryxe.co.Streaming.website.entities.User;
 import tryxe.co.Streaming.website.repositories.UserRepository;
 
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -74,6 +75,19 @@ public class UserService {
             return userRepository.save(user.get());
         } catch (Exception exception) {
             throw new Exception("Wrong format, it must be a numeric value");
+        }
+    }
+    public User updatePhoneNumber(Long id, String phoneNumber) throws Exception {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isEmpty()) throw new Exception("User with id " + id + " doesn't exist");
+        try {
+            if(phoneNumber.length() < 7 || phoneNumber.length() > 15) throw new NumberFormatException();
+            user.get().setPhoneNumber(BigInteger.valueOf(Long.parseLong((phoneNumber))));
+            return userRepository.save(user.get());
+        } catch (NumberFormatException nfe) {
+            throw new NumberFormatException("Wrong format, it must be a numeric value between 7 and 15 digits");
+        } catch (Exception e) {
+            throw new Exception("The phone number " + phoneNumber + " is already associated to an account");
         }
     }
 }
