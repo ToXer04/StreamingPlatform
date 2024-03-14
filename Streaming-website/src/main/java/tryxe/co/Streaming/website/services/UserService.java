@@ -28,4 +28,10 @@ public class UserService {
         user.setId(id);
         return userRepository.save(user);
     }
+    public User updateName(Long id, String name) throws Exception {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isEmpty()) throw new Exception("User with id " + id + " doesn't exist");
+        user.get().setName(name);
+        return userRepository.save(user.get());
+    }
 }
