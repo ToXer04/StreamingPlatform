@@ -30,6 +30,7 @@ public class UserService {
     }
 
     public User update(Long id, User user) {
+        user.setRegistrationDate(userRepository.findById(id).get().getRegistrationDate());
         user.setId(id);
         return userRepository.save(user);
     }
