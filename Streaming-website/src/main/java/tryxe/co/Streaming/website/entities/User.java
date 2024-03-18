@@ -23,14 +23,10 @@ public class User {
     private String surname;
     @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
-    private LocalDate birthDate;
-    @Column(nullable = false)
-    private String country;
-    private LocalDate registrationDate;
-    @Column(nullable = false)
-    private Long prefix;
     @Column(nullable = false, unique = true)
-    private BigInteger phoneNumber;
+    private String username;
+    @Column(nullable = false)
+    private String password;
     private Long membershipId;
+    private String roles;
 }
