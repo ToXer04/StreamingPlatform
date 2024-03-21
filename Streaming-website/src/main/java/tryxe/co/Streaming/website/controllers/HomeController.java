@@ -9,4 +9,8 @@ public class HomeController {
     public String homeController() {
         return "index.html";
     }
+    @GetMapping("/login")
+    public String loginController() {
+        return "form.html";
+    }
 }

@@ -25,10 +25,12 @@ public class SecurityConfiguration {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry -> {
-                    registry.requestMatchers("/","/index.html", "/signup/**").permitAll();
+                    registry.requestMatchers("/", "/signup/user", "/index.html", "/style.css", "form.html", "form.css", "/HomeBG_large.jpg", "/HomeBG_medium.jpg", "/HomeBG_small.jpg", "/Tryxe.png").permitAll();
                     registry.requestMatchers("/user/**").hasRole("USER");
                 })
-                .formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
+                .formLogin(httpSecurityFormLoginConfigurer -> {
+                    httpSecurityFormLoginConfigurer.loginPage("/login").permitAll();
+                })
                 .build();
     }
 
@@ -36,7 +38,6 @@ public class SecurityConfiguration {
     public UserDetailsService userDetailsService() {
         return userService;
     }
-
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
