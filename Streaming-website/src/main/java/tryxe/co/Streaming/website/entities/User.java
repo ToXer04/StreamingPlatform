@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.math.BigInteger;
 import java.time.LocalDate;
@@ -23,14 +24,10 @@ public class User {
     private String surname;
     @Column(nullable = false, unique = true)
     private String email;
-    @Column(nullable = false)
-    private LocalDate birthDate;
-    @Column(nullable = false)
-    private String country;
-    private LocalDate registrationDate;
-    @Column(nullable = false)
-    private Long prefix;
     @Column(nullable = false, unique = true)
-    private BigInteger phoneNumber;
+    private String username;
+    @Column(nullable = false)
+    private String password;
     private Long membershipId;
+    private String roles;
 }
